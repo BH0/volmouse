@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>audio_viz_0</title>
+
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.min.js"></script>
+	
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/addons/p5.sound.min.js"></script>
+	<style>
+		body {
+			margin:0;
+			padding:0;
+			overflow: hidden; 
+		}
+		canvas {
+			margin:auto;
+		}
+	</style>
+</head>
+<body>
+    <div id="volume-container"></div>
+    <script>
+        // Daniel Shiffman
+// http://codingtra.in
+// http://patreon.com/codingtrain
+// Code for: https://youtu.be/q2IDNkUws-A
+
+var mic;
+
+function setup() {
+  // createCanvas(200, 200);
+  mic = new p5.AudioIn();
+  mic.start();
+}
+
+/*
+function draw() {
+  // background(0);
+  var vol = mic.getLevel();
+    // fetch("http://localhost:3000/volume/10"); 
+    // fetch("http://localhost:3000/"); 
+    // document.querySelector("#volume-container").innerText = "VOLUME: "+Math.ceil(vol * 10); 
+    document.querySelector("#volume-container").innerText = Math.ceil(vol * 10); 
+    // ellipse(100, 100, 200, vol * 200);
+}*/ 
+// console.log("Hi again"); 
+
+window.setInterval(() => {
+	var vol = mic.getLevel();
+    document.querySelector("#volume-container").innerText = Math.ceil(vol * 10); 
+}, 120); 
+
+    </script> 
+    
+</body>
+</html>
